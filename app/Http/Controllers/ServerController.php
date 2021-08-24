@@ -88,17 +88,17 @@ class ServerController extends Controller
 
         //minimum credits
         if (Auth::user()->credits <= Configuration::getValueByKey('MINIMUM_REQUIRED_CREDITS_TO_MAKE_SERVER', 50)) {
-            return redirect()->route('servers.index')->with('error', 'Nemáš dostatek kreditů pro vytvoření serveru.');
+            return redirect()->route('servers.index')->with('error', __('You do not have the required amount of credits to create a new server!'));
         }
 
         //Required Verification for creating an server
         if (Configuration::getValueByKey('FORCE_EMAIL_VERIFICATION', 'false') === 'true' && !Auth::user()->hasVerifiedEmail()) {
-            return redirect()->route('profile.index')->with('error', 'Před vytvořením serveru musíte ověřit svou e-mailovou adresu.');
+            return redirect()->route('profile.index')->with('error', __('You are required to verify your email address before you can create a server.'));
         }
 
         //Required Verification for creating an server
         if (Configuration::getValueByKey('FORCE_DISCORD_VERIFICATION', 'false') === 'true' && !Auth::user()->discordUser) {
-            return redirect()->route('profile.index')->with('error', 'Před vytvořením serveru je nutné propojit váš Discord účet.');
+            return redirect()->route('profile.index')->with('error', __('You are required to link your discord account before you can create a server.'));
         }
 
         return null;
@@ -109,9 +109,9 @@ class ServerController extends Controller
     {
         try {
             $server->delete();
-            return redirect()->route('servers.index')->with('success', "{{ __('server odstraněn') }}");
+            return redirect()->route('servers.index')->with('success', __('server removed'));
         } catch (Exception $e) {
-            return redirect()->route('servers.index')->with('error', 'Při pokusu o odebrání zdroje došlo k problému');
+            return redirect()->route('servers.index')->with('error', __('An exception has occurred while trying to remove a resource.'));
         }
     }
 
@@ -126,7 +126,7 @@ class ServerController extends Controller
         $server->delete();
 
         Auth::user()->notify(new ServerCreationError($server));
-        return redirect()->route('servers.index')->with('error', 'Nebyla nalezena žádná přidělení splňující požadavky na automatické nasazení.');
+        return redirect()->route('servers.index')->with('error', __('No allocations satisfying the requirements for automatic deployment were found.'));
     }
 
     /**
