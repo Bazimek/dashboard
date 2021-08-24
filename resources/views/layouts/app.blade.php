@@ -29,7 +29,7 @@
     @if(Session::has('error'))
     Swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: "{{ __('Oops...') }}",
         html: '{{Session::get('error')}}',
     })
     @endif

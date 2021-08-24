@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Servers</h1>
+                    <h1>{{ __('Servers') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('servers.index')}}">Servers</a>
-                        <li class="breadcrumb-item"><a class="text-muted" href="{{route('servers.create')}}">Create</a>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">{{ __('Dashboard') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('servers.index')}}">{{ __('Servers') }}</a>
+                        <li class="breadcrumb-item"><a class="text-muted" href="{{route('servers.create')}}">{{ __('Create') }}</a>
                         </li>
                     </ol>
                 </div>
@@ -29,37 +29,37 @@
             <div class="row justify-content-center">
                 <div class="card col-lg-8 col-md-12 mb-5">
                     <div class="card-header">
-                        <h5 class="card-title"><i class="fa fa-server mr-2"></i>Create Server</h5>
+                        <h5 class="card-title"><i class="fa fa-server mr-2"></i>{{ __('Create Server') }}</h5>
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{route('servers.store')}}">
                             @csrf
                             <div class="form-group">
-                                <label for="name">* Name</label>
+                                <label for="name">* {{ __('Name') }}</label>
                                 <input id="name" name="name" type="text" required="required"
                                        class="form-control @error('name') is-invalid @enderror">
 
                                 @error('name')
                                 <div class="invalid-feedback">
-                                    Please fill out this field.
+								{{ __('Please fill out this field.') }}
                                 </div>
                                 @enderror
 
                             </div>
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">{{ __('Description') }}</label>
                                 <input id="description" name="description" type="text"
                                        class="form-control @error('description') is-invalid @enderror">
 
                                 @error('description')
                                 <div class="invalid-feedback">
-                                    Please fill out this field.
+                                    {{ __('Please fill out this field.') }}
                                 </div>
                                 @enderror
 
                             </div>
                             <div class="form-group">
-                                <label for="location_id">* Server location</label>
+                                <label for="location_id">* {{ __('Server location') }}</label>
                                 <div>
 
                                     <select id="node_id" name="node_id" required="required"
@@ -80,12 +80,12 @@
 
                                 @error('node_id')
                                 <div class="invalid-feedback">
-                                    Please fill out this field.
+                                    {{ __('Please fill out this field.') }}
                                 </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="egg_id">* Server configuration</label>
+                                <label for="egg_id">* {{ __('Server configuration') }}</label>
                                 <div>
                                     <select id="egg_id" name="egg_id" required="required"
                                             class="custom-select @error('egg_id') is-invalid @enderror">
@@ -101,12 +101,12 @@
 
                                 @error('egg_id')
                                 <div class="invalid-feedback">
-                                    Please fill out this field.
+                                    {{ __('Please fill out this field.') }}
                                 </div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="product_id">* Resource Configuration</label>
+                                <label for="product_id">* {{ __('Resource Configuration') }}</label>
                                 <div>
                                     <select id="product_id" name="product_id" required="required"
                                             class="custom-select @error('product_id') is-invalid @enderror">
@@ -120,12 +120,12 @@
 
                                 @error('product_id')
                                 <div class="invalid-feedback">
-                                    Please fill out this field.
+                                    {{ __('Please fill out this field.') }}
                                 </div>
                                 @enderror
                             </div>
                             <div class="form-group text-right">
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <button type="submit" class="btn btn-primary mt-3">{{ __('Submit') }}</button>
                             </div>
                         </form>
 

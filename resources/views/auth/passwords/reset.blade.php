@@ -8,7 +8,7 @@
                 <a href="{{route('welcome')}}" class="h1"><b class="mr-1">{{config('app.name', 'Laravel')}}</b></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
+                <p class="login-box-msg">{{ __('You are only one step away from your new password, recover your password now.') }}</p>
 
                 <form method="POST" action="{{ route('password.update') }}">
                     @csrf
@@ -56,14 +56,14 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Change password</button>
+                            <button type="submit" class="btn btn-primary btn-block">{{ __('Change password') }}</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
                 <p class="mt-3 mb-1">
-                    <a href="{{route('login')}}">Login</a>
+                    <a href="{{route('login')}}">{{ __('Login') }}</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

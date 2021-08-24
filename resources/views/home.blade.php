@@ -6,11 +6,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Dashboard</h1>
+                    <h1>{{ __('Dashboard') }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a class="text-muted" href="">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a class="text-muted" href="">{{ __('Dashboard') }}</a></li>
                     </ol>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-server"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Servers</span>
+                            <span class="info-box-text">{{ __('Servers') }}</span>
                             <span class="info-box-number">{{Auth::user()->servers()->count()}}</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -41,7 +41,7 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-coins"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Credits</span>
+                            <span class="info-box-text">{{ __('Credits') }}</span>
                             <span class="info-box-number">{{Auth::user()->Credits()}}</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -58,8 +58,8 @@
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-chart-line"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Credit usage</span>
-                            <span class="info-box-number">{{number_format($useage, 2, '.', '')}} <sup>per month</sup></span>
+                            <span class="info-box-text">{{ __('Credit usage') }}</span>
+                            <span class="info-box-number">{{number_format($useage, 2, '.', '')}} <sup>{{ __('per month') }}</sup></span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -76,7 +76,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="fas fa-link mr-2"></i>
-                                Useful Links
+                                {{ __('Useful Links') }}
                             </h3>
                         </div>
                         <!-- /.card-header -->
@@ -104,7 +104,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="fas fa-history mr-2"></i>
-                                Activity Log
+                                {{ __('Activity Log') }}
                             </h3>
                         </div>
                         <!-- /.card-header -->

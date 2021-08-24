@@ -36,7 +36,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('home')}}" class="nav-link">Home</a>
+                <a href="{{route('home')}}" class="nav-link">{{ __('Home') }}</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{env('DISCORD_INVITE_URL')}}" class="nav-link" target="__blank">Discord</a>
@@ -55,7 +55,7 @@
                     @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">{{Auth::user()->unreadNotifications->count()}} Notifications</span>
+                    <span class="dropdown-item dropdown-header">{{Auth::user()->unreadNotifications->count()}} {{ __('Notifications') }}</span>
                     <div class="dropdown-divider"></div>
 
                     @foreach(Auth::user()->unreadNotifications->sortBy('created_at')->take(5) as $notification)
@@ -68,8 +68,7 @@
                     @endforeach
 
                     <div class="dropdown-divider"></div>
-                    <a href="{{route('notifications.index')}}" class="dropdown-item dropdown-footer">See All
-                        Notifications</a>
+                    <a href="{{route('notifications.index')}}" class="dropdown-item dropdown-footer">{{ __('See All Notifications') }}</a>
                 </div>
             </li>
 
@@ -86,7 +85,7 @@
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="{{route('profile.index')}}">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
+                        {{ __('Profile') }}
                     </a>
                     {{--                    <a class="dropdown-item" href="#">--}}
                     {{--                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>--}}
@@ -96,20 +95,20 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{route('users.logbackin')}}">
                             <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Log back in
+                            {{ __('Log back in') }}
                         </a>
                     @endif
                     <a class="dropdown-item" data-toggle="modal" data-target="#redeemVoucherModal"
                        href="javascript:void(0)">
                         <i class="fas fa-money-check-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Redeem code
+                        {{ __('Redeem code') }}
                     </a>
                     <div class="dropdown-divider"></div>
                     <form method="post" action="{{route('logout')}}">
                         @csrf
                         <button class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
+                            {{ __('Logout') }}
                         </button>
                     </form>
                 </div>
@@ -139,7 +138,7 @@
                     <li class="nav-item">
                         <a href="{{route('home')}}" class="nav-link @if(Request::routeIs('home')) active @endif">
                             <i class="nav-icon fa fa-home"></i>
-                            <p>Dashboard</p>
+                            <p>{{ __('Dashboard') }}</p>
                         </a>
                     </li>
 
@@ -147,7 +146,7 @@
                         <a href="{{route('servers.index')}}"
                            class="nav-link @if(Request::routeIs('servers.*')) active @endif">
                             <i class="nav-icon fa fa-server"></i>
-                            <p>Servers
+                            <p>{{ __('Servers') }}
                                 <span
                                     class="badge badge-info right">{{Auth::user()->servers()->count()}} / {{Auth::user()->server_limit}}</span>
                             </p>
@@ -159,7 +158,7 @@
                             <a href="{{route('store.index')}}"
                                class="nav-link @if(Request::routeIs('store.*') || Request::routeIs('checkout')) active @endif">
                                 <i class="nav-icon fa fa-coins"></i>
-                                <p>Store</p>
+                                <p>{{ __('Store') }}</p>
                             </a>
                         </li>
                     @endif
@@ -171,7 +170,7 @@
                             <a href="{{route('admin.users.index')}}"
                                class="nav-link @if(Request::routeIs('admin.users.*')) active @endif">
                                 <i class="nav-icon fas fa-users"></i>
-                                <p>Users</p>
+                                <p>{{ __('Users') }}</p>
                             </a>
                         </li>
 
@@ -179,7 +178,7 @@
                             <a href="{{route('admin.servers.index')}}"
                                class="nav-link @if(Request::routeIs('admin.servers.*')) active @endif">
                                 <i class="nav-icon fas fa-server"></i>
-                                <p>Servers</p>
+                                <p>{{ __('Servers') }}</p>
                             </a>
                         </li>
 
@@ -187,7 +186,7 @@
                             <a href="{{route('admin.products.index')}}"
                                class="nav-link @if(Request::routeIs('admin.products.*')) active @endif">
                                 <i class="nav-icon fas fa-sliders-h"></i>
-                                <p>Products</p>
+                                <p>{{ __('Products') }}</p>
                             </a>
                         </li>
 
@@ -195,7 +194,7 @@
                             <a href="{{route('admin.store.index')}}"
                                class="nav-link @if(Request::routeIs('admin.store.*')) active @endif">
                                 <i class="nav-icon fas fa-shopping-basket"></i>
-                                <p>Store</p>
+                                <p>{{ __('Store') }}</p>
                             </a>
                         </li>
 
@@ -203,7 +202,7 @@
                             <a href="{{route('admin.vouchers.index')}}"
                                class="nav-link @if(Request::routeIs('admin.vouchers.*')) active @endif">
                                 <i class="nav-icon fas fa-money-check-alt"></i>
-                                <p>Vouchers</p>
+                                <p>{{ __('Vouchers') }}</p>
                             </a>
                         </li>
 
@@ -213,7 +212,7 @@
                             <a href="{{route('admin.nodes.index')}}"
                                class="nav-link @if(Request::routeIs('admin.nodes.*')) active @endif">
                                 <i class="nav-icon fas fa-sitemap"></i>
-                                <p>Nodes</p>
+                                <p>{{ __('Nodes') }}</p>
                             </a>
                         </li>
 
@@ -221,17 +220,17 @@
                             <a href="{{route('admin.nests.index')}}"
                                class="nav-link @if(Request::routeIs('admin.nests.*')) active @endif">
                                 <i class="nav-icon fas fa-th-large"></i>
-                                <p>Nests</p>
+                                <p>{{ __('Nests') }}</p>
                             </a>
                         </li>
 
-                        <li class="nav-header">Logs</li>
+                        <li class="nav-header">{{ __('Logs') }}</li>
 
                         <li class="nav-item">
                             <a href="{{route('admin.payments.index')}}"
                                class="nav-link @if(Request::routeIs('admin.payments.*')) active @endif">
                                 <i class="nav-icon fas fa-money-bill-wave"></i>
-                                <p>Payments
+                                <p>{{ __('Payments') }}
                                     <span class="badge badge-success right">{{\App\Models\Payment::count()}}</span>
                                 </p>
                             </a>
@@ -241,18 +240,18 @@
                             <a href="{{route('admin.activitylogs.index')}}"
                                class="nav-link @if(Request::routeIs('admin.activitylogs.*')) active @endif">
                                 <i class="nav-icon fas fa-clipboard-list"></i>
-                                <p>Activity Logs</p>
+                                <p>{{ __('Activity Logs') }}</p>
                             </a>
                         </li>
 
 
-                        <li class="nav-header">Dashboard</li>
+                        <li class="nav-header">{{ __('Dashboard') }}</li>
 
                         <li class="nav-item">
                             <a href="{{route('admin.api.index')}}"
                                class="nav-link @if(Request::routeIs('admin.api.*')) active @endif">
                                 <i class="nav-icon fa fa-gamepad"></i>
-                                <p>Application API</p>
+                                <p>{{ __('Application API') }}</p>
                             </a>
                         </li>
 
@@ -260,17 +259,17 @@
                             <a href="{{route('admin.usefullinks.index')}}"
                                class="nav-link @if(Request::routeIs('admin.usefullinks.*')) active @endif">
                                 <i class="nav-icon fas fa-link"></i>
-                                <p>Useful Links</p>
+                                <p>{{ __('Useful Links') }}</p>
                             </a>
                         </li>
 
-                        <li class="nav-header">Settings</li>
+                        <li class="nav-header">{{ __('Settings') }}</li>
 
                         <li class="nav-item">
                             <a href="{{route('admin.configurations.index')}}"
                                class="nav-link @if(Request::routeIs('admin.configurations.*')) active @endif">
                                 <i class="nav-icon fas fa-cogs"></i>
-                                <p>Configurations</p>
+                                <p>{{ __('Configurations') }}</p>
                             </a>
                         </li>
 
@@ -278,7 +277,7 @@
                             <a href="{{route('admin.settings.index')}}"
                                class="nav-link @if(Request::routeIs('admin.settings.*')) active @endif">
                                 <i class="nav-icon fas fa-tools"></i>
-                                <p>Settings</p>
+                                <p>{{ __('Settings') }}</p>
                             </a>
                         </li>
 
@@ -298,12 +297,9 @@
         @if(!Auth::user()->hasVerifiedEmail())
             @if(Auth::user()->created_at->diffInHours(now(), false) > 1)
                 <div class="alert alert-warning p-2 m-2">
-                    <h5><i class="icon fas fa-exclamation-circle"></i> Warning!</h5>
-                    You have not yet verified your email address <a class="text-primary"
-                                                                    href="{{route('verification.send')}}">Click here to
-                        resend
-                        verification email</a> <br>
-                    Please contact support If you didn't receive your verification email.
+                    <h5><i class="icon fas fa-exclamation-circle"></i>{{ __('Warning!') }}</h5>
+                    {{ __('You have not yet verified your email address') }} <a class="text-primary" href="{{route('verification.send')}}">{{ __('Click here to resend verification email') }}</a><br>
+					{{ __('Please contact support If you didn\'t receive your verification email.') }}
                 </div>
             @endif
         @endif
@@ -359,7 +355,7 @@
     @if(Session::has('error'))
     Swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: "{{ __('Oops...') }}",
         html: '{{Session::get('error')}}',
     })
     @endif
