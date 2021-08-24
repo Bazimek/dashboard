@@ -44,16 +44,16 @@
                             <div class="col-sm-4 invoice-col">
 							{{ __('From') }}
                                 <address>
-                                    <strong>{{config('app.name' , 'Laravel')}}</strong><br>
-										{{ __('Email') }}: {{env('PAYPAL_EMAIL' , env('MAIL_FROM_NAME'))}}
+                                    <strong>{{Auth::user()->name}}</strong><br>
+                                    {{ __('Email') }}: {{Auth::user()->email}}
                                 </address>
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-4 invoice-col">
 							{{ __('To') }}
                                 <address>
-                                    <strong>{{Auth::user()->name}}</strong><br>
-                                    {{ __('Email') }}: {{Auth::user()->email}}
+                                    <strong>{{config('app.name' , 'Laravel')}}</strong><br>
+										{{ __('Email') }}: {{env('PAYPAL_EMAIL' , env('MAIL_FROM_NAME'))}}
                                 </address>
                             </div>
                             <!-- /.col -->
