@@ -74,7 +74,7 @@ class ServerController extends Controller
             'identifier' => $response->json()['attributes']['identifier']
         ]);
 
-        return redirect()->route('servers.index')->with('success', 'server vytvořen');
+        return redirect()->route('servers.index')->with('success', 'server created');
     }
 
     /**
@@ -83,22 +83,22 @@ class ServerController extends Controller
     private function validateConfigurationRules(){
         //limit validation
         if (Auth::user()->servers()->count() >= Auth::user()->server_limit) {
-            return redirect()->route('servers.index')->with('error', 'Server limit byl dosáhnut!');
+            return redirect()->route('servers.index')->with('error', 'Server limit reached!');
         }
 
         //minimum credits
         if (Auth::user()->credits <= Configuration::getValueByKey('MINIMUM_REQUIRED_CREDITS_TO_MAKE_SERVER', 50)) {
-            return redirect()->route('servers.index')->with('error', __('You do not have the required amount of credits to create a new server!'));
+            return redirect()->route('servers.index')->with('error', "You do not have the required amount of ".CREDITS_DISPLAY_NAME." to create a new server!");
         }
 
         //Required Verification for creating an server
         if (Configuration::getValueByKey('FORCE_EMAIL_VERIFICATION', 'false') === 'true' && !Auth::user()->hasVerifiedEmail()) {
-            return redirect()->route('profile.index')->with('error', __('You are required to verify your email address before you can create a server.'));
+            return redirect()->route('profile.index')->with('error', "You are required to verify your email address before you can create a server.");
         }
 
         //Required Verification for creating an server
         if (Configuration::getValueByKey('FORCE_DISCORD_VERIFICATION', 'false') === 'true' && !Auth::user()->discordUser) {
-            return redirect()->route('profile.index')->with('error', __('You are required to link your discord account before you can create a server.'));
+            return redirect()->route('profile.index')->with('error', "You are required to link your discord account before you can create a server.");
         }
 
         return null;
@@ -109,9 +109,9 @@ class ServerController extends Controller
     {
         try {
             $server->delete();
-            return redirect()->route('servers.index')->with('success', __('server removed'));
+            return redirect()->route('servers.index')->with('success', 'server removed');
         } catch (Exception $e) {
-            return redirect()->route('servers.index')->with('error', __('An exception has occurred while trying to remove a resource.'));
+            return redirect()->route('servers.index')->with('error', 'An exception has occurred while trying to remove a resource "' . $e->getMessage() . '"');
         }
     }
 
@@ -126,7 +126,7 @@ class ServerController extends Controller
         $server->delete();
 
         Auth::user()->notify(new ServerCreationError($server));
-        return redirect()->route('servers.index')->with('error', __('No allocations satisfying the requirements for automatic deployment were found.'));
+        return redirect()->route('servers.index')->with('error', 'No allocations satisfying the requirements for automatic deployment were found.');
     }
 
     /**
